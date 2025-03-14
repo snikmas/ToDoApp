@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do - Main</title>
+  <link link="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="form-div">
+  <h1>To Do App</h1>
+  <form action="/addTask" method="POST">
+      <input type="text" name="task" placeholder="Your task"  required>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+
+  <div id="allTasks">
+    <h1>Your tasks</h1>
+    <div class="ul-container">
+      <ul class="taskList">
+        <li>
+          <input type="checkbox" class="taskDone" name="completed" value="false">Go out
+          <button class="remove">Delete</button>
+        </li>
+        <li>
+          <input type="checkbox" class="taskDone" name="taskDone">Go out
+          <button class="remove">Delete</button>
+        </li>
+
+      </ul>      
+    </div>
+  </div>
+  
+
+</body>
+</html> 

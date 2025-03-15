@@ -23,7 +23,7 @@
         <% for(const task of tasks) { %>
         <li>
           <input type="checkbox" class="taskDone" name="completed" value="false"><%= task.task %>
-          <button class="delete">Delete</button>
+          <button data-id="<%= task._id %>" class="delete">Delete</button>
         </li>
         <% } %>
 

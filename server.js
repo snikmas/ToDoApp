@@ -1,14 +1,16 @@
 import {MongoClient} from "mongodb"
 import express from "express"
+import bodyParser from 'body-parser'
 
 const PORT = process.env.PORT
 const DB_STRING = process.env.DB_STRING
 const dirname = import.meta.dirname
 const app = express();
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 app.set('view engine', 'main.ejs');
-app.use(exress.static('public'))
+app.use(express.static('public'))
 
 
 async function connectToDb(){
@@ -59,10 +61,8 @@ function createServer(tasks) {
 
 
   app.delete('/deleteTask', async(req, res) => {
-    console.log('oops')
     try {
-      const result = await book.deleteOne({ _id: req.body._id})
-
+      const result = await tasks.deleteOne({ task: req.body.task})
       res.json("Deleted")
 
     } catch(err){

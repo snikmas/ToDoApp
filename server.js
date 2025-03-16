@@ -70,13 +70,37 @@ function createServer(tasks) {
     }
   })
   
+  async function taskStatus(req, res, status, tasks){
+    try {
+      const result = await tasks.updateOne({
+        task: req.body.task
+      }, {
+        $set: {
+          completed: status,
+        }
+      });
+
+      res.json(`Marked ${status ? 'Completed' : 'Uncompleted'}`)} catch (err) {
+        console.error('Failed to complete the task')
+      }
+    }
+  }
+
+
+  app.put('/taskUncompleted', async(req, res) => {
+    await taskStatus(req, res, false, tasks);
+  })
+
+  app.put('/taskCompleted', async(req, res) => {
+    await taskStatus(req, res, true, tasks);
+  })
   
   
   app.listen(PORT || 3000, () => {
     console.log('listeting...')
   })
   
-}
+
   
 async function main() {
   try{

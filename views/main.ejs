@@ -20,9 +20,14 @@
     <h1>Your tasks</h1>
     <div class="ul-container">
       <ul class="taskList">
-        <% for(const task of tasks) { %>
+        <% for(const task of tasks) { 
+          if (task.value === false) {%>
         <li>
           <input type="checkbox" class="taskDone uncompleted" name="completed" value="false"><%= task.task %>
+        } else {%>
+        <li><input type="checkbox
+          " class="taskDone uncompleted" name="completed" value="false"></li>
+        }
           <button data-id="<%= task._id %>" class="delete">Delete</button>
         </li>
         <% } %>
